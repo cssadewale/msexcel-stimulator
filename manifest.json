@@ -1,0 +1,51 @@
+{
+  "name": "MS Excel Stimulator",
+  "short_name": "MS Excel",
+  "description": "MS Excel Stimulator \u2014 enterprise-grade Excel-style spreadsheet replica by Adewale Samson Adeagbo, built with free tools only and no AI API cost.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#217346",
+  "theme_color": "#217346",
+  "orientation": "any",
+  "lang": "en",
+  "categories": [
+    "productivity",
+    "utilities",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Website",
+      "short_name": "Website",
+      "url": "https://cssadewale.pages.dev",
+      "description": "Author website"
+    },
+    {
+      "name": "GitHub",
+      "short_name": "GitHub",
+      "url": "https://github.com/cssadewale",
+      "description": "GitHub profile"
+    },
+    {
+      "name": "Linked profile",
+      "short_name": "Linked",
+      "url": "https://linked.com/in/adewalesamsonadeagbo",
+      "description": "Linked profile"
+    }
+  ]
+}
