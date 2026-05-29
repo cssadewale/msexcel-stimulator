@@ -1,5 +1,5 @@
 /* MS Excel Stimulator service worker | Branding: Adewale Samson Adeagbo | DataTech Builder | Data Scientist | Educator | https://cssadewale.pages.dev | buildingmyictcareer@gmail.com | 2348100866322, 2348094481488 */
-const CACHE_NAME = 'ms-excel-stimulator-free-v1';
+const CACHE_NAME = 'ms-excel-stimulator-free-v3-expansion-20260529';
 const ASSETS = [
   './',
   './index.html',
@@ -18,8 +18,13 @@ const ASSETS = [
   './README.md',
   './DEPLOYMENT.md',
   './USER_GUIDE.md',
-  './CHANGELOG.md'
-];
+  './CHANGELOG.md',
+  './HOTFIX_PATCH_SUMMARY.md',
+  './TOPBAR_HOTFIX_REPORT.md',
+  './FEATURE_SYSTEM_REFERENCE.md',
+  './DEPLOYMENT_STEP_BY_STEP.md',
+  './FREE_TOOLS_ONLY_NOTE.md'
+]
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });

@@ -3373,7 +3373,7 @@ function initDragDrop(){document.addEventListener('dragover',function(e){e.preve
 function addCtxItems(){var menu=document.getElementById('ctx-menu');if(!menu)return;var frag=document.createDocumentFragment();function sep(){var d=document.createElement('div');d.className='ctx-sep';return d;}function item(icon,lbl,fn2){var d=document.createElement('div');d.className='ctx-item';d.innerHTML='<span class="ctx-icon">'+icon+'</span> '+lbl;d.onclick=fn2;return d;}frag.appendChild(sep());frag.appendChild(item('📌▾','Paste Special…',function(e){openPasteSpecial(e);}));frag.appendChild(item('🌡️','Heatmap',applyHeatmap));frag.appendChild(item('📈','Column Statistics',showColStats));frag.appendChild(item('✨','Insert Sparkline…',function(){om('modal-spark');}));frag.appendChild(item('🔒','Lock Cell(s)',lockCells));frag.appendChild(item('⚡','Flash Fill',runFlashFill));frag.appendChild(item('🎨','Cell Styles…',openStylesGallery));menu.appendChild(frag);}
 
 // Tools Ribbon Tab
-var TR='<div class="rgroup"><button class="rbtn tooltip" data-tip="Goal Seek (Ctrl+G)" onclick="openModal(\'modal-goalseek\')"><span class="icon">🎯</span><span class="rlabel">Goal Seek</span></button><button class="rbtn tooltip" data-tip="Scenario Manager" onclick="openModal(\'modal-scenario\');DSP.renderScenarioList()"><span class="icon">📐</span><span class="rlabel">Scenarios</span></button><button class="rbtn tooltip" data-tip="Workbook Statistics" onclick="DSP.showWBStats()"><span class="icon">📊</span><span class="rlabel">WB Stats</span></button><button class="rbtn tooltip" data-tip="Auto Summary rows" onclick="DSP.autoSummary()"><span class="icon">Σ</span><span class="rlabel">Summary</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Named Ranges (Ctrl+Shift+L)" onclick="openModal(\'modal-names\');DSP.renderNRList()"><span class="icon">📌</span><span class="rlabel">Names</span></button><button class="rbtn tooltip" data-tip="Insert Sparkline" onclick="openModal(\'modal-spark\')"><span class="icon">✨</span><span class="rlabel">Sparklines</span></button><button class="rbtn tooltip" data-tip="Column Statistics (Ctrl+Shift+K)" onclick="DSP.showColStats()"><span class="icon">📈</span><span class="rlabel">Col Stats</span></button><button class="rbtn tooltip" data-tip="Heatmap" onclick="DSP.applyHeatmap()"><span class="icon">🌡️</span><span class="rlabel">Heatmap</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Flash Fill (Ctrl+E)" onclick="DSP.runFlashFill()"><span class="icon">⚡</span><span class="rlabel">Flash Fill</span></button><button class="rbtn tooltip" data-tip="Text to Columns" onclick="openModal(\'modal-t2c\')"><span class="icon">🔀</span><span class="rlabel">Text→Cols</span></button><button class="rbtn tooltip" data-tip="Multi-Level Sort" onclick="DSP.multiSort()"><span class="icon">↕↕</span><span class="rlabel">Multi-Sort</span></button><button class="rbtn tooltip" data-tip="Regex Filter" onclick="DSP.applyRegexFilter()"><span class="icon">🔍.*</span><span class="rlabel">Regex Flt</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Data Bars" onclick="openModal(\'modal-databars\')"><span class="icon">📊</span><span class="rlabel">Data Bars</span></button><button class="rbtn tooltip" data-tip="Icon Sets" onclick="openModal(\'modal-iconset\')"><span class="icon">🎯</span><span class="rlabel">Icon Sets</span></button><button class="rbtn tooltip" data-tip="Formula Auditing (Ctrl+Shift+F)" onclick="DSP.openAudit()"><span class="icon">🔬</span><span class="rlabel">Audit</span></button><button class="rbtn tooltip" data-tip="Watch Window (Ctrl+W)" onclick="DSP.openWatchWindow()"><span class="icon">👁</span><span class="rlabel">Watch</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Subtotals" onclick="openModal(\'modal-subtotal\')"><span class="icon">Σ±</span><span class="rlabel">Subtotals</span></button><button class="rbtn tooltip" data-tip="Consolidate" onclick="openModal(\'modal-consolidate\')"><span class="icon">🔗</span><span class="rlabel">Consolidate</span></button><button class="rbtn tooltip" data-tip="Format as Table" onclick="openModal(\'modal-tablestyle\')"><span class="icon">📋</span><span class="rlabel">As Table</span></button><button class="rbtn tooltip" data-tip="Cell Styles gallery" onclick="DSP.openStylesGallery()"><span class="icon">🎨</span><span class="rlabel">Styles</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Lock selected cells" onclick="DSP.lockCells()"><span class="icon">🔒</span><span class="rlabel">Lock</span></button><button class="rbtn tooltip" data-tip="Unlock selected cells" onclick="DSP.unlockCells()"><span class="icon">🔓</span><span class="rlabel">Unlock</span></button><button class="rbtn tooltip" data-tip="Sheet Protection" onclick="openModal(\'modal-protect\')"><span class="icon">🛡️</span><span class="rlabel">Protect</span></button><button class="rbtn tooltip" data-tip="Paste Special" onclick="DSP.openPasteSpecial(event)"><span class="icon">📌▾</span><span class="rlabel">Paste Spc</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Export HTML" onclick="DSP.saveHTML()"><span class="icon">🌐</span><span class="rlabel">HTML</span></button><button class="rbtn tooltip" data-tip="Export JSON" onclick="DSP.saveJSON()"><span class="icon">{}</span><span class="rlabel">JSON</span></button><button class="rbtn tooltip" data-tip="Custom number format" onclick="DSP.applyCustomNF()"><span class="icon">#.##</span><span class="rlabel">Cust Fmt</span></button><button class="rbtn tooltip" data-tip="Print settings" onclick="openModal(\'modal-printarea\')"><span class="icon">🖨️</span><span class="rlabel">Print Set</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Toggle Dark Mode (Ctrl+D)" onclick="DSP.toggleDark()"><span class="icon">🌙</span><span class="rlabel">Dark Mode</span></button><button class="rbtn tooltip" data-tip="Quick Analysis (Ctrl+Q)" onclick="DSP.openQuickAnalysis()"><span class="icon">⚡⊞</span><span class="rlabel">Quick Ana.</span></button><button class="rbtn tooltip" data-tip="Expand formula bar" onclick="DSP.toggleFormulaBarExpand()"><span class="icon">↕ƒx</span><span class="rlabel">Expand ƒx</span></button><button class="rbtn tooltip" data-tip="Remove sparkline" onclick="DSP.removeSparkline()"><span class="icon">✕✨</span><span class="rlabel">Rm Spark</span></button></div>';
+var TR='<div class="rgroup"><button class="rbtn tooltip" data-tip="Goal Seek (Ctrl+G)" onclick="openModal(\'modal-goalseek\')"><span class="icon">🎯</span><span class="rlabel">Goal Seek</span></button><button class="rbtn tooltip" data-tip="Scenario Manager" onclick="openModal(\'modal-scenario\');DSP.renderScenarioList()"><span class="icon">📐</span><span class="rlabel">Scenarios</span></button><button class="rbtn tooltip" data-tip="Workbook Statistics" onclick="DSP.showWBStats()"><span class="icon">📊</span><span class="rlabel">WB Stats</span></button><button class="rbtn tooltip" data-tip="Auto Summary rows" onclick="DSP.autoSummary()"><span class="icon">Σ</span><span class="rlabel">Summary</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Named Ranges (Ctrl+Shift+L)" onclick="openModal(\'modal-names\');DSP.renderNRList()"><span class="icon">📌</span><span class="rlabel">Names</span></button><button class="rbtn tooltip" data-tip="Insert Sparkline" onclick="openModal(\'modal-spark\')"><span class="icon">✨</span><span class="rlabel">Sparklines</span></button><button class="rbtn tooltip" data-tip="Column Statistics (Ctrl+Shift+M)" onclick="DSP.showColStats()"><span class="icon">📈</span><span class="rlabel">Col Stats</span></button><button class="rbtn tooltip" data-tip="Heatmap" onclick="DSP.applyHeatmap()"><span class="icon">🌡️</span><span class="rlabel">Heatmap</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Flash Fill (Ctrl+E)" onclick="DSP.runFlashFill()"><span class="icon">⚡</span><span class="rlabel">Flash Fill</span></button><button class="rbtn tooltip" data-tip="Text to Columns" onclick="openModal(\'modal-t2c\')"><span class="icon">🔀</span><span class="rlabel">Text→Cols</span></button><button class="rbtn tooltip" data-tip="Multi-Level Sort" onclick="DSP.multiSort()"><span class="icon">↕↕</span><span class="rlabel">Multi-Sort</span></button><button class="rbtn tooltip" data-tip="Regex Filter" onclick="DSP.applyRegexFilter()"><span class="icon">🔍.*</span><span class="rlabel">Regex Flt</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Data Bars" onclick="openModal(\'modal-databars\')"><span class="icon">📊</span><span class="rlabel">Data Bars</span></button><button class="rbtn tooltip" data-tip="Icon Sets" onclick="openModal(\'modal-iconset\')"><span class="icon">🎯</span><span class="rlabel">Icon Sets</span></button><button class="rbtn tooltip" data-tip="Formula Auditing (Ctrl+Shift+F)" onclick="DSP.openAudit()"><span class="icon">🔬</span><span class="rlabel">Audit</span></button><button class="rbtn tooltip" data-tip="Watch Window (Ctrl+W)" onclick="DSP.openWatchWindow()"><span class="icon">👁</span><span class="rlabel">Watch</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Subtotals" onclick="openModal(\'modal-subtotal\')"><span class="icon">Σ±</span><span class="rlabel">Subtotals</span></button><button class="rbtn tooltip" data-tip="Consolidate" onclick="openModal(\'modal-consolidate\')"><span class="icon">🔗</span><span class="rlabel">Consolidate</span></button><button class="rbtn tooltip" data-tip="Format as Table" onclick="openModal(\'modal-tablestyle\')"><span class="icon">📋</span><span class="rlabel">As Table</span></button><button class="rbtn tooltip" data-tip="Cell Styles gallery" onclick="DSP.openStylesGallery()"><span class="icon">🎨</span><span class="rlabel">Styles</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Lock selected cells" onclick="DSP.lockCells()"><span class="icon">🔒</span><span class="rlabel">Lock</span></button><button class="rbtn tooltip" data-tip="Unlock selected cells" onclick="DSP.unlockCells()"><span class="icon">🔓</span><span class="rlabel">Unlock</span></button><button class="rbtn tooltip" data-tip="Sheet Protection" onclick="openModal(\'modal-protect\')"><span class="icon">🛡️</span><span class="rlabel">Protect</span></button><button class="rbtn tooltip" data-tip="Paste Special" onclick="DSP.openPasteSpecial(event)"><span class="icon">📌▾</span><span class="rlabel">Paste Spc</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Export HTML" onclick="DSP.saveHTML()"><span class="icon">🌐</span><span class="rlabel">HTML</span></button><button class="rbtn tooltip" data-tip="Export JSON" onclick="DSP.saveJSON()"><span class="icon">{}</span><span class="rlabel">JSON</span></button><button class="rbtn tooltip" data-tip="Custom number format" onclick="DSP.applyCustomNF()"><span class="icon">#.##</span><span class="rlabel">Cust Fmt</span></button><button class="rbtn tooltip" data-tip="Print settings" onclick="openModal(\'modal-printarea\')"><span class="icon">🖨️</span><span class="rlabel">Print Set</span></button></div><div class="rgroup"><button class="rbtn tooltip" data-tip="Toggle Dark Mode (Ctrl+D)" onclick="DSP.toggleDark()"><span class="icon">🌙</span><span class="rlabel">Dark Mode</span></button><button class="rbtn tooltip" data-tip="Quick Analysis (Ctrl+Q)" onclick="DSP.openQuickAnalysis()"><span class="icon">⚡⊞</span><span class="rlabel">Quick Ana.</span></button><button class="rbtn tooltip" data-tip="Expand formula bar" onclick="DSP.toggleFormulaBarExpand()"><span class="icon">↕ƒx</span><span class="rlabel">Expand ƒx</span></button><button class="rbtn tooltip" data-tip="Remove sparkline" onclick="DSP.removeSparkline()"><span class="icon">✕✨</span><span class="rlabel">Rm Spark</span></button></div>';
 
 function addToolsTab(){var tabs=document.getElementById('ribbon-tabs');if(!tabs||tabs.querySelector('[data-tab="tools"]'))return;var t=document.createElement('div');t.className='rtab';t.dataset.tab='tools';t.textContent='Tools';t.onclick=function(){document.getElementById('ribbon-content').innerHTML=TR;document.querySelectorAll('.rtab').forEach(function(el){el.classList.toggle('active',el===t);});};tabs.appendChild(t);}
 
@@ -6931,6 +6931,605 @@ window.addEventListener('load', init);
 })();
 </script>
 <!-- /MSES_ENTERPRISE_PLUS -->
+
+
+<!-- MSES_TOPBAR_FREEZE_HOTFIX_2026_05_29 -->
+<script>
+(function(){
+'use strict';
+if(window.__MSES_TOPBAR_FREEZE_HOTFIX__) return;
+window.__MSES_TOPBAR_FREEZE_HOTFIX__ = true;
+
+const STARTUP_MODAL_IDS = ['modal-onboarding-plus','modal-brand-welcome','modal-startup-choice'];
+
+function safeStorageSet(key, value){
+  try { localStorage.setItem(key, value); } catch (e) {}
+}
+function markStartupFlowComplete(){
+  safeStorageSet('dsp_onboarded_v1', '1');
+  safeStorageSet('dsp_welcome_seen_v2', '1');
+}
+function closeStartupModals(markComplete){
+  if(markComplete) markStartupFlowComplete();
+  STARTUP_MODAL_IDS.forEach(function(id){
+    const el = document.getElementById(id);
+    if(el) el.classList.remove('open');
+  });
+}
+function findSheetIndexSafe(name){
+  try {
+    if(typeof window.findSheetIndexByName === 'function'){
+      const idx = window.findSheetIndexByName(name);
+      if(typeof idx === 'number' && idx >= 0) return idx;
+    }
+  } catch (e) {}
+  const sheets = Array.isArray(window.sheets) ? window.sheets : [];
+  for(let i=0;i<sheets.length;i++) if(sheets[i] && sheets[i].name === name) return i;
+  return -1;
+}
+function openExistingSheet(name){
+  const idx = findSheetIndexSafe(name);
+  if(idx < 0) return false;
+  if(typeof window.switchSheet === 'function') window.switchSheet(idx);
+  else {
+    window.curSheet = idx;
+    if(typeof window.renderSheet === 'function') window.renderSheet();
+  }
+  return true;
+}
+function wrapButton(label, handler){
+  const btn = Array.from(document.querySelectorAll('#titlebar .wbtns button')).find(function(el){
+    return el.textContent.trim() === label;
+  });
+  if(!btn || btn.dataset.msesFreezeHotfix === '1') return;
+  const original = btn.onclick;
+  btn.onclick = function(event){
+    return handler.call(this, event, original);
+  };
+  btn.dataset.msesFreezeHotfix = '1';
+}
+function wrapApi(obj, key, handler){
+  if(!obj || typeof obj[key] !== 'function' || obj[key].__msesFreezeHotfixWrapped) return;
+  const original = obj[key];
+  const wrapped = function(){
+    return handler.call(this, original, arguments);
+  };
+  wrapped.__msesFreezeHotfixWrapped = true;
+  obj[key] = wrapped;
+}
+function preventLaunchModalCollision(){
+  const welcome = document.getElementById('modal-brand-welcome');
+  const onboarding = document.getElementById('modal-onboarding-plus');
+  if(welcome && onboarding && welcome.classList.contains('open') && onboarding.classList.contains('open')){
+    onboarding.classList.remove('open');
+  }
+}
+function patchTitlebarActions(){
+  wrapButton('❓ Help', function(event, original){
+    closeStartupModals(true);
+    if(typeof original === 'function') return original.call(this, event);
+  });
+  wrapButton('👤 About', function(event, original){
+    closeStartupModals(true);
+    if(typeof original === 'function') return original.call(this, event);
+  });
+  wrapButton('🏠 Home', function(event, original){
+    closeStartupModals(true);
+    if(openExistingSheet('HMG Dashboard')) return;
+    if(typeof original === 'function') return original.call(this, event);
+  });
+  wrapButton('🖨️ Report', function(event, original){
+    closeStartupModals(true);
+    if(typeof original === 'function') return original.call(this, event);
+    if(window.DSPXENTERPRISE && typeof window.DSPXENTERPRISE.openReport === 'function') return window.DSPXENTERPRISE.openReport();
+  });
+  wrapButton('📦 Pack', function(event, original){
+    closeStartupModals(true);
+    if(typeof original === 'function') return original.call(this, event);
+    if(window.DSPXENTERPRISE && typeof window.DSPXENTERPRISE.exportPack === 'function') return window.DSPXENTERPRISE.exportPack();
+    if(window.DSPXELITE && typeof window.DSPXELITE.exportPack === 'function') return window.DSPXELITE.exportPack();
+  });
+  wrapButton('🏢 Ops', function(event, original){
+    closeStartupModals(true);
+    if(typeof original === 'function') return original.call(this, event);
+    if(window.MSESEnterprise && typeof window.MSESEnterprise.openConsole === 'function') return window.MSESEnterprise.openConsole();
+  });
+  wrapButton('🔎 Search', function(event, original){
+    closeStartupModals(true);
+    if(typeof original === 'function') return original.call(this, event);
+    if(window.MSESEnterprise && typeof window.MSESEnterprise.searchWorkbook === 'function') return window.MSESEnterprise.searchWorkbook();
+  });
+}
+function patchNavigationApis(){
+  wrapApi(window.DSPXREAL, 'openLanding', function(original, args){
+    closeStartupModals(true);
+    if(openExistingSheet('HMG Dashboard')) return;
+    return original.apply(this, args);
+  });
+  wrapApi(window.DSPXREAL, 'openAbout', function(original, args){
+    closeStartupModals(true);
+    if(openExistingSheet('About the Author')) return;
+    return original.apply(this, args);
+  });
+  wrapApi(window.DSPXENTERPRISE, 'openDashboard', function(original, args){
+    closeStartupModals(true);
+    if(openExistingSheet('HMG Dashboard')) return;
+    return original.apply(this, args);
+  });
+  wrapApi(window.DSPXENTERPRISE, 'openAbout', function(original, args){
+    closeStartupModals(true);
+    if(openExistingSheet('About the Author')) return;
+    return original.apply(this, args);
+  });
+  wrapApi(window.DSPXPREMIUM, 'closeWelcome', function(original, args){
+    markStartupFlowComplete();
+    closeStartupModals(false);
+    return original.apply(this, args);
+  });
+  wrapApi(window.DSPXPREMIUM, 'showWelcome', function(original, args){
+    const onboarding = document.getElementById('modal-onboarding-plus');
+    if(onboarding) onboarding.classList.remove('open');
+    return original.apply(this, args);
+  });
+  wrapApi(window.MSESEnterprise, 'searchWorkbook', function(original, args){
+    closeStartupModals(true);
+    return original.apply(this, args);
+  });
+  wrapApi(window.MSESEnterprise, 'openConsole', function(original, args){
+    closeStartupModals(true);
+    return original.apply(this, args);
+  });
+}
+function observeLateButtons(){
+  const host = document.querySelector('#titlebar .wbtns');
+  if(!host || host.__msesFreezeHotfixObs) return;
+  const obs = new MutationObserver(function(){ patchTitlebarActions(); patchNavigationApis(); });
+  obs.observe(host, {childList:true, subtree:false});
+  host.__msesFreezeHotfixObs = true;
+}
+function initHotfix(){
+  patchTitlebarActions();
+  patchNavigationApis();
+  observeLateButtons();
+  preventLaunchModalCollision();
+  setTimeout(preventLaunchModalCollision, 900);
+  setTimeout(preventLaunchModalCollision, 1600);
+}
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initHotfix);
+else initHotfix();
+window.addEventListener('load', function(){ setTimeout(initHotfix, 250); setTimeout(initHotfix, 1200); });
+})();
+</script>
+<!-- /MSES_TOPBAR_FREEZE_HOTFIX_2026_05_29 -->
+
+<!-- MSES_FREE_TOOLS_EXPANSION_2026_05_29 -->
+<script>
+(function(){
+'use strict';
+if(window.__MSES_FREE_TOOLS_EXPANSION__) return;
+window.__MSES_FREE_TOOLS_EXPANSION__ = true;
+
+var FEATURE_ITEMS = [
+  {category:'Workbook', title:'Multi-sheet workbook', shortcut:'—', keywords:'sheet workbook tabs create rename duplicate move hide', detail:'The platform supports multiple worksheets inside one workbook so raw data, cleaned data, reports, dashboards, pivots, and branded pages can live together without requiring external paid software.'},
+  {category:'Workbook', title:'Workbook backup and restore', shortcut:'—', keywords:'backup restore snapshot json workbook', detail:'Users can export the entire workbook state as a JSON snapshot and restore it later. This gives continuity without needing a paid database or cloud backend.'},
+  {category:'Workbook', title:'Workbook Index', shortcut:'—', keywords:'workbook index governance inventory sheets', detail:'Workbook Index generates a governance-style summary of all sheets, including used cells, formulas, comments, charts, hidden status, and protection status.'},
+  {category:'Workbook', title:'Data Dictionary', shortcut:'—', keywords:'dictionary headers inferred types samples', detail:'Data Dictionary scans the active source sheet and documents columns, inferred types, and sample values. It is useful for data handoff and governance.'},
+  {category:'Workbook', title:'Workbook Health Dashboard', shortcut:'New', keywords:'health diagnostics workbook quality summary', detail:'Workbook Health Dashboard is a new browser-only feature that builds a health sheet showing workbook counts, storage footprint, hidden/protected sheets, formula totals, and used-range diagnostics.'},
+  {category:'Workbook', title:'Data Profile Sheet', shortcut:'New', keywords:'data profile blanks filled numeric text formulas unique', detail:'Data Profile Sheet is a new browser-only analysis worksheet that profiles the active sheet column by column with filled count, blank count, numeric/text counts, formula counts, sampled uniqueness, and sample values.'},
+  {category:'Editing', title:'Excel-style grid editing', shortcut:'F2 / double-click', keywords:'grid edit active cell formula bar selection', detail:'The application behaves like a spreadsheet grid with active-cell focus, row/column headers, in-cell editing, formula-bar editing, and structured range selection.'},
+  {category:'Editing', title:'Smart render window', shortcut:'—', keywords:'smart render performance large grid 2000 1200', detail:'Instead of drawing all logical cells at once, the app renders a smart window around the visible area. This preserves usability on large logical sheets using only free browser tools.'},
+  {category:'Editing', title:'Find and replace', shortcut:'Ctrl+F / Ctrl+H', keywords:'find replace search values sheet', detail:'Find and replace lets users search within workbook content and replace single or multiple matches without relying on any external processing service.'},
+  {category:'Editing', title:'Touch support and floating toolbar', shortcut:'—', keywords:'touch mobile floating toolbar edit formatting', detail:'Touch actions and the floating toolbar improve editing on tablets and small screens while still preserving desktop-style spreadsheet workflows.'},
+  {category:'Formulas', title:'Formula engine', shortcut:'=', keywords:'formula sum average if vlookup index match', detail:'The built-in formula engine evaluates Excel-style expressions directly in the browser. It supports arithmetic, comparisons, text logic, date functions, lookups, statistics, and error-handling workflows.'},
+  {category:'Formulas', title:'Named ranges and syntax help', shortcut:'Ctrl+Shift+L', keywords:'named ranges syntax autocomplete', detail:'Named ranges and syntax hints help users build readable spreadsheet models and reduce formula mistakes without needing external plugins.'},
+  {category:'Formatting', title:'Cell styling and number formats', shortcut:'Ctrl+B / Ctrl+I / Ctrl+U', keywords:'bold italic underline fill borders number formats', detail:'Formatting tools include fonts, size, emphasis, borders, colours, alignment, wrap, merges, and number formats such as currency, percentage, scientific, integer, and custom display patterns.'},
+  {category:'Formatting', title:'Dark mode and presentation polish', shortcut:'Ctrl+D', keywords:'dark mode presentation theme glow', detail:'Dark mode and premium visual polish improve readability during demos, presentations, and extended work sessions.'},
+  {category:'Data', title:'Sort, filter, regex filter, validation', shortcut:'—', keywords:'sort filter regex validation', detail:'The workbook includes browser-side sort, filter, regex-based filtering, validation rules, and cleanup options so users can work with structured data using only free tools.'},
+  {category:'Data', title:'Paste Special, Flash Fill, Text to Columns', shortcut:'Ctrl+E for Flash Fill', keywords:'paste special flash fill text to columns', detail:'These tools speed up transformation workflows by splitting text, repeating detected patterns, and applying selective paste behavior such as values-only or formulas-only.'},
+  {category:'Data', title:'CSV, JSON, XLSX import/export', shortcut:'—', keywords:'csv json xlsx import export', detail:'The platform can exchange data through CSV, JSON, and XLSX using a bundled SheetJS community build and browser-native downloads.'},
+  {category:'Analysis', title:'Charts and pivot tables', shortcut:'—', keywords:'chart pivot analysis visual summary', detail:'Charts and pivot workflows provide visual and grouped analysis without requiring Power BI, paid dashboards, or external analytics APIs.'},
+  {category:'Analysis', title:'Goal Seek, scenarios, subtotals, consolidate', shortcut:'Ctrl+G for Goal Seek', keywords:'goal seek scenario subtotal consolidate', detail:'These decision-support tools enable what-if analysis, grouped reporting, and cross-range summary building directly inside the workbook.'},
+  {category:'Analysis', title:'Heatmaps, data bars, icon sets, sparklines', shortcut:'—', keywords:'heatmap data bars icon sets sparklines', detail:'Visual analytics features help users interpret patterns in dense data using in-cell or range-based indicators without extra libraries or paid BI services.'},
+  {category:'Productivity', title:'Command Palette', shortcut:'Ctrl+/', keywords:'command palette quick action launcher new', detail:'The new Command Palette lets users search common actions such as Dashboard, About, Search Workbook, Data Profile, Workbook Health, Feature Catalog, and Deployment Playbook from one keyboard-first launcher.'},
+  {category:'Productivity', title:'Feature Catalog', shortcut:'New', keywords:'feature catalog documentation detailed explanation new', detail:'The new Feature Catalog gives searchable, structured explanations of the system capabilities so users can understand what each feature does and when to use it.'},
+  {category:'Productivity', title:'Searchable Help Center', shortcut:'—', keywords:'help center searchable support docs', detail:'The built-in help center provides searchable support topics embedded in the app itself, reducing dependence on external documentation during use.'},
+  {category:'Productivity', title:'Deployment Playbook', shortcut:'New', keywords:'deployment playbook github pages netlify cloudflare local server', detail:'The new Deployment Playbook gives click-by-click hosting steps for GitHub Pages, Netlify, Cloudflare Pages, and local Python hosting, including post-deploy cache refresh guidance.'},
+  {category:'Governance', title:'Audit Log Export', shortcut:'—', keywords:'audit log export traceability json', detail:'Audit Log Export downloads tracked workbook/user actions as JSON for traceability, review, or handoff.'},
+  {category:'Governance', title:'Workbook Manifest Export', shortcut:'—', keywords:'manifest export workbook inventory', detail:'Workbook Manifest Export summarizes workbook structure, sheet order, used cells, formulas, comments, charts, and bounds in one downloadable JSON file.'},
+  {category:'Review', title:'Comments, hyperlinks, auditing, watch window', shortcut:'Ctrl+W for Watch', keywords:'comments hyperlinks audit watch window', detail:'Review features help users annotate data, insert references, inspect formulas, and monitor important cells even when they are off-screen.'},
+  {category:'Presentation', title:'HMG Dashboard and About the Author pages', shortcut:'—', keywords:'dashboard about author branding pages', detail:'Premium branded pages transform the workbook into a presentation-ready environment for demos, reporting, personal branding, and institutional showcase workflows.'},
+  {category:'Presentation', title:'Printable report and PDF-style export', shortcut:'—', keywords:'print report pdf export', detail:'Users can open a report-ready HTML view and save it to PDF through the browser print dialog, avoiding any paid PDF generation service.'},
+  {category:'Presentation', title:'Brand Pack export', shortcut:'—', keywords:'brand pack export assets persona report html', detail:'Brand Pack export creates a JSON bundle containing persona metadata, embedded brand assets, and printable report HTML for reuse or archive.'},
+  {category:'Presentation', title:'Presentation Mode', shortcut:'—', keywords:'presentation mode fullscreen showcase', detail:'Presentation Mode reduces editing chrome and makes the workbook more suitable for recruiter, client, training, or boardroom walkthroughs.'},
+  {category:'Architecture', title:'Free-tools-only architecture', shortcut:'No AI API', keywords:'free tools no ai api no paid backend no cost', detail:'This platform is intentionally built with HTML, CSS, vanilla JavaScript, local browser storage, and the free SheetJS community build. It avoids paid AI APIs because they are not cost effective for this use case.'}
+];
+
+function esc(v){ return String(v == null ? '' : v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function q(sel){ return document.querySelector(sel); }
+function qa(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+function notify(msg){ if(typeof window.notify === 'function') window.notify(msg, 2200); }
+function activeRibbonLabel(){ var a = q('#ribbon-tabs .rtab.active'); return a ? a.textContent.trim() : ''; }
+function openModal(id){ var el=document.getElementById(id); if(el) el.classList.add('open'); }
+function closeModal(id){ var el=document.getElementById(id); if(el) el.classList.remove('open'); }
+function currentSheetSafe(){ return Array.isArray(window.sheets) && window.sheets[window.curSheet] ? window.sheets[window.curSheet] : null; }
+function sheetAt(i){ return Array.isArray(window.sheets) ? window.sheets[i] : null; }
+function usedBounds(sheet){
+  var maxR = 0, maxC = 0, has = false;
+  Object.keys((sheet && sheet.data) || {}).forEach(function(r){
+    Object.keys(sheet.data[r] || {}).forEach(function(c){
+      var val = sheet.data[r][c];
+      if(val !== '' && val !== undefined && val !== null){
+        has = true;
+        maxR = Math.max(maxR, +r);
+        maxC = Math.max(maxC, +c);
+      }
+    });
+  });
+  return {maxR:maxR, maxC:maxC, has:has};
+}
+function colLabel(i){
+  if(typeof window.colL === 'function') return window.colL(i);
+  var s='', n=i+1; while(n>0){ s=String.fromCharCode(65+((n-1)%26))+s; n=Math.floor((n-1)/26); } return s;
+}
+function makeSheet(name, color){
+  if(typeof window.mkSheet === 'function') return window.mkSheet(name, color || '#0b2d4a');
+  return {name:name, tc:color||'#0b2d4a', data:{}, fmt:{}, merges:[], cw:{}, rh:{}, act:{r:0,c:0}, sel:{r1:0,c1:0,r2:0,c2:0}, charts:[], fr:0, fc:0, hRows:{}, hCols:{}, filt:{}, valid:{}, cf:[], cmts:{}, links:{}, zoom:100};
+}
+function ensureReportSheet(name, color){
+  if(!Array.isArray(window.sheets)) window.sheets = [];
+  var idx = window.sheets.findIndex(function(s){ return s && s.name === name; });
+  if(idx === -1){
+    window.sheets.push(makeSheet(name, color));
+    idx = window.sheets.length - 1;
+  } else {
+    window.sheets[idx] = makeSheet(name, color || window.sheets[idx].tc || '#0b2d4a');
+  }
+  return {sheet:window.sheets[idx], idx:idx};
+}
+function setCell(sheet, r, c, value, fmt){
+  if(!sheet.data[r]) sheet.data[r] = {};
+  sheet.data[r][c] = value;
+  if(fmt){
+    if(!sheet.fmt[r]) sheet.fmt[r] = {};
+    sheet.fmt[r][c] = Object.assign({}, sheet.fmt[r][c] || {}, fmt);
+  }
+}
+function merge(sheet, r1, c1, r2, c2){
+  sheet.merges = sheet.merges || [];
+  sheet.merges.push({r1:r1,c1:c1,r2:r2,c2:c2});
+}
+function protectSheet(sheet){
+  sheet.protection = {active:true, hash:null, allowSelect:true, allowSort:false, allowFilter:false};
+}
+function openSheetIdx(idx){
+  if(typeof window.switchSheet === 'function') window.switchSheet(idx);
+  else { window.curSheet = idx; if(typeof window.renderSheet === 'function') window.renderSheet(); }
+}
+function countUsed(sheet){
+  var n = 0;
+  Object.keys((sheet && sheet.data) || {}).forEach(function(r){
+    Object.keys(sheet.data[r] || {}).forEach(function(c){
+      var v = sheet.data[r][c];
+      if(v !== '' && v !== undefined && v !== null) n++;
+    });
+  });
+  return n;
+}
+function countFormulas(sheet){
+  var n = 0;
+  Object.keys((sheet && sheet.data) || {}).forEach(function(r){
+    Object.keys(sheet.data[r] || {}).forEach(function(c){
+      if(String(sheet.data[r][c] || '').startsWith('=')) n++;
+    });
+  });
+  return n;
+}
+function getDisplayValue(r, c, sheet){
+  try {
+    if(typeof window.getDisp === 'function') return String(window.getDisp(r, c, sheet) || '');
+  } catch (e) {}
+  return String(sheet && sheet.data && sheet.data[r] && sheet.data[r][c] != null ? sheet.data[r][c] : '');
+}
+function buildWorkbookHealthSheet(openAfter){
+  var pack = ensureReportSheet('Workbook Health', '#0f172a');
+  var s = pack.sheet;
+  [70,180,180,180,180,180].forEach(function(w, i){ s.cw[i] = w; });
+  setCell(s,0,0,'Workbook Health Dashboard', {bold:true,fsize:20,bg:'#0f172a',fg:'#ffffff'}); merge(s,0,0,1,5);
+  setCell(s,2,0,'Generated', {bold:true,bg:'#e2e8f0'}); setCell(s,2,1,new Date().toLocaleString());
+  setCell(s,3,0,'Runtime', {bold:true,bg:'#e2e8f0'}); setCell(s,3,1,'Browser-only / free-tools-only / no AI API');
+  setCell(s,4,0,'Sheet Count', {bold:true,bg:'#e2e8f0'}); setCell(s,4,1,String((window.sheets || []).length));
+  setCell(s,5,0,'Current Sheet', {bold:true,bg:'#e2e8f0'}); setCell(s,5,1,currentSheetSafe() ? currentSheetSafe().name : 'N/A');
+  setCell(s,6,0,'Approx Local Storage Footprint', {bold:true,bg:'#e2e8f0'});
+  try { setCell(s,6,1,String(new Blob(Object.values(localStorage)).size.toLocaleString()) + ' bytes'); } catch (e) { setCell(s,6,1,'Unavailable'); }
+  setCell(s,8,0,'#', {bold:true,bg:'#0b2d4a',fg:'#fff'});
+  ['Sheet','Used Cells','Formulas','Comments','Charts','Status'].forEach(function(h, i){ setCell(s,8,i+1,h,{bold:true,bg:'#0b2d4a',fg:'#fff'}); });
+  (window.sheets || []).forEach(function(sheet, i){
+    var row = 9 + i;
+    var status = [];
+    if(sheet.hidden) status.push('Hidden');
+    if(sheet.protection && sheet.protection.active) status.push('Protected');
+    if(!status.length) status.push('Active/Visible');
+    var bg = i % 2 ? '#f8fafc' : '#ffffff';
+    setCell(s,row,0,String(i+1),{bg:bg});
+    setCell(s,row,1,sheet.name || ('Sheet ' + (i+1)),{bg:bg,bold:i===window.curSheet});
+    setCell(s,row,2,String(countUsed(sheet)),{bg:bg});
+    setCell(s,row,3,String(countFormulas(sheet)),{bg:bg});
+    setCell(s,row,4,String(Object.keys(sheet.cmts || {}).length),{bg:bg});
+    setCell(s,row,5,String((sheet.charts || []).length),{bg:bg});
+    setCell(s,row,6,status.join(', '),{bg:bg,wrap:true});
+  });
+  protectSheet(s);
+  if(typeof window.autoSave === 'function') window.autoSave();
+  if(openAfter !== false) openSheetIdx(pack.idx);
+  notify('Workbook Health sheet generated');
+}
+function buildDataProfileSheet(openAfter){
+  var source = currentSheetSafe();
+  if(!source){ notify('No active sheet to profile'); return; }
+  var bounds = usedBounds(source);
+  var pack = ensureReportSheet('Data Profile', '#185c38');
+  var s = pack.sheet;
+  [60,90,180,90,90,90,90,90,110,260,280].forEach(function(w, i){ s.cw[i] = w; });
+  setCell(s,0,0,'Data Profile', {bold:true,fsize:20,bg:'#185c38',fg:'#ffffff'}); merge(s,0,0,1,7);
+  setCell(s,2,0,'Source Sheet', {bold:true,bg:'#e2e8f0'}); setCell(s,2,1,source.name || 'Untitled');
+  setCell(s,3,0,'Generated', {bold:true,bg:'#e2e8f0'}); setCell(s,3,1,new Date().toLocaleString());
+  setCell(s,4,0,'Method', {bold:true,bg:'#e2e8f0'}); setCell(s,4,1,'Browser-side profiling only. No AI API or paid backend used.');
+  ['#','Column','Header','Filled','Blank','Numeric','Text','Formulas','Unique (sampled)','Sample Values','Notes'].forEach(function(h, i){
+    setCell(s,6,i,h,{bold:true,bg:'#0b2d4a',fg:'#ffffff'});
+  });
+  var row = 7;
+  for(var c=0;c<=bounds.maxC;c++){
+    var header = String(source.data[0] && source.data[0][c] !== undefined ? source.data[0][c] : colLabel(c));
+    var filled = 0, blank = 0, numeric = 0, text = 0, formulas = 0;
+    var uniq = new Set();
+    var sample = [];
+    for(var r=1;r<=bounds.maxR;r++){
+      var raw = source.data[r] && source.data[r][c] !== undefined ? source.data[r][c] : '';
+      var disp = getDisplayValue(r, c, source);
+      if(raw === '' || raw === undefined || raw === null){ blank++; continue; }
+      filled++;
+      if(String(raw).startsWith('=')) formulas++;
+      if(!isNaN(Number(raw)) && String(raw).trim() !== '') numeric++; else text++;
+      if(uniq.size < 250) uniq.add(String(disp));
+      if(sample.length < 5) sample.push(String(disp));
+    }
+    var bg = (row % 2 === 0) ? '#f8fafc' : '#ffffff';
+    setCell(s,row,0,String(c+1),{bg:bg});
+    setCell(s,row,1,colLabel(c),{bg:bg,bold:true});
+    setCell(s,row,2,header,{bg:bg,wrap:true});
+    setCell(s,row,3,String(filled),{bg:bg});
+    setCell(s,row,4,String(blank),{bg:bg});
+    setCell(s,row,5,String(numeric),{bg:bg});
+    setCell(s,row,6,String(text),{bg:bg});
+    setCell(s,row,7,String(formulas),{bg:bg});
+    setCell(s,row,8,String(uniq.size),{bg:bg});
+    setCell(s,row,9,sample.join(' | ') || '—',{bg:bg,wrap:true});
+    setCell(s,row,10,'Sampled with free in-browser logic. Use alongside Data Dictionary for governance-ready documentation.',{bg:bg,wrap:true});
+    row++;
+  }
+  protectSheet(s);
+  if(typeof window.autoSave === 'function') window.autoSave();
+  if(openAfter !== false) openSheetIdx(pack.idx);
+  notify('Data Profile sheet generated');
+}
+function ensureFeatureModal(){
+  if(document.getElementById('modal-mses-feature-catalog')) return;
+  var wrap = document.createElement('div');
+  wrap.className = 'modal-overlay';
+  wrap.id = 'modal-mses-feature-catalog';
+  wrap.innerHTML = '<div class="modal wide" style="max-width:1040px;">'
+    + '<div class="modal-hdr"><span>📘 Feature Catalog</span><button onclick="document.getElementById(\'modal-mses-feature-catalog\').classList.remove(\'open\')">✕</button></div>'
+    + '<div class="modal-body">'
+    + '<div style="font-size:12px;line-height:1.8;margin-bottom:10px;color:var(--muted)">This catalog explains the workbook features in plain language. It is embedded locally and does not use any AI API or paid inference service.</div>'
+    + '<input id="mses-feature-search" placeholder="Search features, e.g. pivot, deploy, backup, command, profile" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:12px;">'
+    + '<div id="mses-feature-results" style="max-height:480px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:6px;background:#fff;"></div>'
+    + '</div>'
+    + '<div class="modal-footer"><button class="btn-secondary" onclick="document.getElementById(\'modal-mses-feature-catalog\').classList.remove(\'open\')">Close</button></div></div>';
+  document.body.appendChild(wrap);
+  document.getElementById('mses-feature-search').addEventListener('input', function(){ renderFeatureCatalog(this.value); });
+}
+function renderFeatureCatalog(query){
+  var el = document.getElementById('mses-feature-results');
+  if(!el) return;
+  var qv = String(query || '').trim().toLowerCase();
+  var items = FEATURE_ITEMS.filter(function(item){
+    if(!qv) return true;
+    return (item.category + ' ' + item.title + ' ' + item.keywords + ' ' + item.detail + ' ' + item.shortcut).toLowerCase().indexOf(qv) !== -1;
+  });
+  if(!items.length){ el.innerHTML = '<div style="padding:12px;color:var(--muted)">No matching features found.</div>'; return; }
+  el.innerHTML = items.map(function(item){
+    return '<div style="border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin:8px;">'
+      + '<div style="display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;">'
+      + '<div><span style="display:inline-block;padding:2px 8px;border-radius:999px;background:#eef6ff;color:#0b2d4a;font-size:10px;font-weight:700;text-transform:uppercase;">' + esc(item.category) + '</span>'
+      + '<div style="font-size:16px;font-weight:800;color:#185c38;margin-top:6px;">' + esc(item.title) + '</div></div>'
+      + '<span style="font-size:11px;color:var(--muted);font-weight:700;">' + esc(item.shortcut || '—') + '</span></div>'
+      + '<div style="font-size:12px;line-height:1.8;color:#334155;margin-top:8px;">' + esc(item.detail) + '</div>'
+      + '</div>';
+  }).join('');
+}
+function openFeatureCatalog(){
+  ensureFeatureModal();
+  openModal('modal-mses-feature-catalog');
+  renderFeatureCatalog('');
+  var input = document.getElementById('mses-feature-search');
+  if(input){ input.value=''; setTimeout(function(){ input.focus(); }, 50); }
+}
+function ensureDeployModal(){
+  if(document.getElementById('modal-mses-deploy-playbook')) return;
+  var wrap = document.createElement('div');
+  wrap.className = 'modal-overlay';
+  wrap.id = 'modal-mses-deploy-playbook';
+  wrap.innerHTML = '<div class="modal wide" style="max-width:1100px;">'
+    + '<div class="modal-hdr"><span>🚀 Deployment Playbook</span><button onclick="document.getElementById(\'modal-mses-deploy-playbook\').classList.remove(\'open\')">✕</button></div>'
+    + '<div class="modal-body" style="font-size:12px;line-height:1.85;">'
+    + '<div style="padding:12px;border:1px solid var(--border);border-radius:10px;background:#f9fffb;margin-bottom:12px;"><b style="color:#185c38">Free-tools-only note</b><br>This platform runs with HTML, CSS, vanilla JavaScript, browser storage, and the free SheetJS community build. It does <b>not</b> use an AI API because that is not cost effective for the product goals.</div>'
+    + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">'
+    + '<div style="border:1px solid var(--border);border-radius:12px;padding:12px;"><b style="color:#0b2d4a">A. Files you must keep together</b><ol><li><code>index.html</code></li><li><code>DataSheet-Pro-v3.html</code></li><li><code>xlsx.full.min.js</code></li><li><code>manifest.json</code></li><li><code>service-worker.js</code></li><li>all brand images and favicon files</li><li><code>icons/</code> folder</li></ol></div>'
+    + '<div style="border:1px solid var(--border);border-radius:12px;padding:12px;"><b style="color:#0b2d4a">B. Local quick test</b><ol><li>Open the package folder.</li><li>Double-click <code>index.html</code> to test basic loading.</li><li>For full PWA/service-worker testing, run <code>python3 -m http.server 8080</code>.</li><li>Open <code>http://127.0.0.1:8080/</code>.</li></ol></div>'
+    + '<div style="border:1px solid var(--border);border-radius:12px;padding:12px;"><b style="color:#0b2d4a">C. GitHub Pages</b><ol><li>Create or open your GitHub repository.</li><li>Upload every file from the package to the repository root.</li><li>Commit and push to the <code>main</code> branch.</li><li>Open <b>Settings → Pages</b>.</li><li>Select <b>Deploy from a branch</b>.</li><li>Choose branch <code>main</code> and folder <code>/ (root)</code>.</li><li>Save and wait for the live URL.</li><li>Open the site and hard-refresh once.</li></ol></div>'
+    + '<div style="border:1px solid var(--border);border-radius:12px;padding:12px;"><b style="color:#0b2d4a">D. Netlify</b><ol><li>Open <code>https://app.netlify.com/drop</code>.</li><li>Drag the full package folder into the drop zone.</li><li>Wait for the generated URL.</li><li>Open the site and test import/export, dashboard, help, search, and report.</li><li>If satisfied, claim the site inside a free Netlify account.</li></ol></div>'
+    + '<div style="border:1px solid var(--border);border-radius:12px;padding:12px;"><b style="color:#0b2d4a">E. Cloudflare Pages</b><ol><li>Create a free Cloudflare account.</li><li>Open <b>Workers & Pages → Pages</b>.</li><li>Create a new static Pages project.</li><li>Upload the package files.</li><li>Deploy and test the generated URL.</li></ol></div>'
+    + '<div style="border:1px solid var(--border);border-radius:12px;padding:12px;"><b style="color:#0b2d4a">F. After deployment</b><ol><li>Hard-refresh the live site.</li><li>If the old version appears, unregister the old service worker in DevTools.</li><li>Clear site storage once.</li><li>Reload so the new cache key activates.</li><li>Run hosted QA on Help, About, Home, Report, Pack, Ops, Search, Workbook Health, Data Profile, Feature Catalog, and Command Palette.</li></ol></div>'
+    + '</div></div>'
+    + '<div class="modal-footer"><button class="btn-secondary" onclick="document.getElementById(\'modal-mses-deploy-playbook\').classList.remove(\'open\')">Close</button></div></div>';
+  document.body.appendChild(wrap);
+}
+function openDeployPlaybook(){ ensureDeployModal(); openModal('modal-mses-deploy-playbook'); }
+function getCommands(){
+  return [
+    {title:'Open Feature Catalog', desc:'Search detailed explanations of system features.', run:openFeatureCatalog, keywords:'feature docs explanation catalog'},
+    {title:'Open Deployment Playbook', desc:'Show detailed free-hosting steps.', run:openDeployPlaybook, keywords:'deploy github netlify cloudflare hosting'},
+    {title:'Generate Workbook Health Sheet', desc:'Create a workbook health dashboard.', run:function(){ buildWorkbookHealthSheet(true); }, keywords:'health diagnostics workbook sheet'},
+    {title:'Generate Data Profile Sheet', desc:'Profile the active sheet column by column.', run:function(){ buildDataProfileSheet(true); }, keywords:'data profile active sheet blanks numeric'},
+    {title:'Open Workbook Search', desc:'Search across workbook sheets.', run:function(){ if(window.MSESEnterprise && window.MSESEnterprise.searchWorkbook) window.MSESEnterprise.searchWorkbook(); }, keywords:'search workbook'},
+    {title:'Open Workbook Index', desc:'Generate or open workbook index.', run:function(){ if(window.MSESEnterprise && window.MSESEnterprise.openWorkbookIndex) window.MSESEnterprise.openWorkbookIndex(); }, keywords:'workbook index'},
+    {title:'Open Data Dictionary', desc:'Generate or open the data dictionary.', run:function(){ if(window.MSESEnterprise && window.MSESEnterprise.openDataDictionary) window.MSESEnterprise.openDataDictionary(); }, keywords:'data dictionary'},
+    {title:'Export Audit Log', desc:'Download tracked actions as JSON.', run:function(){ if(window.MSESEnterprise && window.MSESEnterprise.exportAuditLog) window.MSESEnterprise.exportAuditLog(); }, keywords:'audit log export json'},
+    {title:'Open Dashboard', desc:'Jump to branded dashboard.', run:function(){ if(window.DSPXENTERPRISE && window.DSPXENTERPRISE.openDashboard) window.DSPXENTERPRISE.openDashboard(); else if(window.DSPXREAL && window.DSPXREAL.openLanding) window.DSPXREAL.openLanding(); }, keywords:'dashboard home'},
+    {title:'Open About the Author', desc:'Open the branded author page.', run:function(){ if(window.DSPXENTERPRISE && window.DSPXENTERPRISE.openAbout) window.DSPXENTERPRISE.openAbout(); else if(window.MSESEnterprise && window.MSESEnterprise.openAbout) window.MSESEnterprise.openAbout(); }, keywords:'about author branding'},
+    {title:'Open Help Center', desc:'Open searchable help.', run:function(){ if(window.DSPXPLUS && window.DSPXPLUS.openHelpCenter) window.DSPXPLUS.openHelpCenter(); }, keywords:'help center'},
+    {title:'Open Manual', desc:'Open embedded manual.', run:function(){ if(window.DSPX && window.DSPX.openDocs) window.DSPX.openDocs(); }, keywords:'manual docs'},
+    {title:'Open Deploy Guide', desc:'Open the embedded deploy guide.', run:function(){ if(window.DSPX && window.DSPX.openDeploy) window.DSPX.openDeploy(); else openDeployPlaybook(); }, keywords:'deploy guide docs'},
+    {title:'Open Enterprise Console', desc:'Open workbook enterprise console.', run:function(){ if(window.MSESEnterprise && window.MSESEnterprise.openConsole) window.MSESEnterprise.openConsole(); }, keywords:'enterprise ops console'}
+  ];
+}
+function ensureCommandPalette(){
+  if(document.getElementById('modal-mses-command-palette')) return;
+  var wrap = document.createElement('div');
+  wrap.className = 'modal-overlay';
+  wrap.id = 'modal-mses-command-palette';
+  wrap.innerHTML = '<div class="modal wide" style="max-width:860px;">'
+    + '<div class="modal-hdr"><span>⌘ Command Palette</span><button onclick="document.getElementById(\'modal-mses-command-palette\').classList.remove(\'open\')">✕</button></div>'
+    + '<div class="modal-body">'
+    + '<div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Shortcut: <b>Ctrl+/</b> (or <b>Cmd+/</b> on Mac)</div>'
+    + '<input id="mses-command-search" placeholder="Type an action, e.g. dashboard, deploy, feature, profile" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:12px;">'
+    + '<div id="mses-command-results" style="max-height:420px;overflow:auto;border:1px solid var(--border);border-radius:10px;background:#fff;"></div>'
+    + '</div>'
+    + '<div class="modal-footer"><button class="btn-secondary" onclick="document.getElementById(\'modal-mses-command-palette\').classList.remove(\'open\')">Close</button></div></div>';
+  document.body.appendChild(wrap);
+  var input = document.getElementById('mses-command-search');
+  input.addEventListener('input', function(){ renderCommandResults(this.value); });
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      var first = q('#mses-command-results [data-command-index]');
+      if(first) first.click();
+    }
+  });
+}
+function renderCommandResults(query){
+  var el = document.getElementById('mses-command-results');
+  if(!el) return;
+  var qv = String(query || '').trim().toLowerCase();
+  var cmds = getCommands().filter(function(cmd){
+    if(!qv) return true;
+    return (cmd.title + ' ' + cmd.desc + ' ' + cmd.keywords).toLowerCase().indexOf(qv) !== -1;
+  });
+  if(!cmds.length){ el.innerHTML = '<div style="padding:12px;color:var(--muted)">No matching commands.</div>'; return; }
+  el.innerHTML = cmds.map(function(cmd, idx){
+    return '<div data-command-index="' + idx + '" style="padding:12px;border-bottom:1px solid #eef2f7;cursor:pointer;">'
+      + '<div style="font-weight:800;color:#0b2d4a;">' + esc(cmd.title) + '</div>'
+      + '<div style="font-size:11px;color:var(--muted);margin-top:2px;">' + esc(cmd.desc) + '</div>'
+      + '</div>';
+  }).join('');
+  qa('#mses-command-results [data-command-index]').forEach(function(node, idx){
+    node.onclick = function(){ closeModal('modal-mses-command-palette'); cmds[idx].run(); };
+  });
+}
+function openCommandPalette(){
+  ensureCommandPalette();
+  openModal('modal-mses-command-palette');
+  renderCommandResults('');
+  var input = document.getElementById('mses-command-search');
+  if(input){ input.value=''; setTimeout(function(){ input.focus(); }, 50); }
+}
+function injectButtons(){
+  var title = q('#titlebar .wbtns');
+  if(title && !title.querySelector('[data-mses-feature-btn]')){
+    var features = document.createElement('button');
+    features.textContent = '📘 Features';
+    features.className = 'tooltip';
+    features.dataset.tip = 'Open searchable feature catalog';
+    features.setAttribute('data-mses-feature-btn','1');
+    features.onclick = openFeatureCatalog;
+    title.appendChild(features);
+  }
+  var ribbon = q('#ribbon-content');
+  var active = activeRibbonLabel();
+  if(ribbon && (active === 'Help' || active === 'Free+' || active === 'Tools') && !ribbon.querySelector('[data-mses-xtra-ribbon]')){
+    var group = document.createElement('div');
+    group.className = 'rgroup';
+    group.setAttribute('data-mses-xtra-ribbon','1');
+    group.innerHTML = '<button class="rbtn tooltip" data-tip="Search detailed feature explanations" onclick="MSESXTRA.openFeatureCatalog()"><span class="icon">📘</span><span class="rlabel">Features</span></button>'
+      + '<button class="rbtn tooltip" data-tip="Open deployment playbook" onclick="MSESXTRA.openDeployPlaybook()"><span class="icon">🚀</span><span class="rlabel">Deploy+</span></button>'
+      + '<button class="rbtn tooltip" data-tip="Build workbook health dashboard" onclick="MSESXTRA.openWorkbookHealth()"><span class="icon">🩺</span><span class="rlabel">Health</span></button>'
+      + '<button class="rbtn tooltip" data-tip="Profile the active sheet" onclick="MSESXTRA.openDataProfile()"><span class="icon">🧬</span><span class="rlabel">Profile</span></button>'
+      + '<button class="rbtn tooltip" data-tip="Open command palette (Ctrl+/)" onclick="MSESXTRA.openCommandPalette()"><span class="icon">⌘</span><span class="rlabel">Commands</span></button>';
+    ribbon.appendChild(group);
+  }
+}
+function enhanceEnterpriseConsole(){
+  var body = document.getElementById('mses-enterprise-body');
+  if(body && !body.querySelector('[data-mses-xtra-console]')){
+    var box = document.createElement('div');
+    box.setAttribute('data-mses-xtra-console','1');
+    box.style.cssText = 'margin-top:12px;padding:12px;border:1px solid var(--border);border-radius:10px;background:#fff;';
+    box.innerHTML = '<b style="color:#185c38">Free Productivity Expansion</b>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px;">'
+      + '<button class="btn-primary" onclick="MSESXTRA.openFeatureCatalog()">📘 Feature Catalog</button>'
+      + '<button class="btn-primary" onclick="MSESXTRA.openDeployPlaybook()">🚀 Deploy Playbook</button>'
+      + '<button class="btn-primary" onclick="MSESXTRA.openWorkbookHealth()">🩺 Workbook Health</button>'
+      + '<button class="btn-primary" onclick="MSESXTRA.openDataProfile()">🧬 Data Profile</button>'
+      + '<button class="btn-primary" onclick="MSESXTRA.openCommandPalette()">⌘ Command Palette</button>'
+      + '</div><div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.7;">These additions use only browser-native logic and free bundled tools. No AI API is used.</div>';
+    body.appendChild(box);
+  }
+}
+function initKeys(){
+  if(document.body.__msesXtraKeys) return;
+  document.body.__msesXtraKeys = true;
+  document.addEventListener('keydown', function(e){
+    var ctrl = e.ctrlKey || e.metaKey;
+    var tag = document.activeElement && document.activeElement.tagName;
+    var inInput = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+    if(ctrl && e.key === '/'){
+      e.preventDefault();
+      openCommandPalette();
+      return;
+    }
+    if(inInput) return;
+    if(ctrl && e.shiftKey && e.key.toLowerCase() === 'm'){
+      e.preventDefault();
+      openFeatureCatalog();
+    }
+  });
+}
+function observeUI(){
+  if(document.body.__msesXtraObs) return;
+  var obs = new MutationObserver(function(){ injectButtons(); enhanceEnterpriseConsole(); });
+  obs.observe(document.body, {childList:true, subtree:true});
+  document.body.__msesXtraObs = true;
+}
+function init(){
+  injectButtons();
+  enhanceEnterpriseConsole();
+  initKeys();
+  observeUI();
+}
+window.MSESXTRA = {
+  openFeatureCatalog: openFeatureCatalog,
+  openDeployPlaybook: openDeployPlaybook,
+  openCommandPalette: openCommandPalette,
+  openWorkbookHealth: function(){ buildWorkbookHealthSheet(true); },
+  openDataProfile: function(){ buildDataProfileSheet(true); }
+};
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
+window.addEventListener('load', function(){ setTimeout(init, 300); });
+})();
+
+</script>
+<!-- /MSES_FREE_TOOLS_EXPANSION_2026_05_29 -->
 
 </body>
 </html>

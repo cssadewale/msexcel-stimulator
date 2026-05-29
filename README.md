@@ -19,13 +19,19 @@ This README is the standardized product overview, feature reference, and package
 
 It focuses on what the product is, what it includes, and how the package is structured.
 
+
+### New companion references
+- `FEATURE_SYSTEM_REFERENCE.md` — detailed explanation of the system features, including the new Command Palette, Feature Catalog, Workbook Health, and Data Profile tools
+- `DEPLOYMENT_STEP_BY_STEP.md` — clear deployment instructions for GitHub Pages, Netlify, Cloudflare Pages, and local hosting
+- `FREE_TOOLS_ONLY_NOTE.md` — explains the no-AI-API, free-tools-only architecture choice
+
 ---
 
 ## 3. Current Release / Release Numbering Strategy
 
-**Current release:** `v5.0.1`  
-**Release name:** `MS Excel Stimulator Publishing Guides & QA Validation`  
-**Release date:** `2026-05-22`  
+**Current release:** `v5.1.0`  
+**Release name:** `MS Excel Stimulator Free-Tools Productivity Expansion`  
+**Release date:** `2026-05-29`  
 **Changelog file:** `CHANGELOG.md`
 
 ### Formal release numbering strategy
@@ -34,7 +40,7 @@ This package now uses a documentation-facing release format:
 - **Minor** (`vX.Y.0`) = substantial feature additions, workflow improvements, UI upgrades, or enterprise add-ons
 - **Patch** (`vX.Y.Z`) = fixes, cleanup, packaging corrections, deployment corrections, or small documentation updates
 
-The current release is **v5.0.1** because it adds release publishing guides, a release notes file, a QA report, and enterprise validation on top of the rebranded workbook package.
+The current release is **v5.1.0** because it adds a searchable Feature Catalog, a keyboard-first Command Palette, Workbook Health diagnostics, active-sheet Data Profile generation, a clearer Deployment Playbook, and stronger documentation for the free-tools-only architecture.
 
 ---
 
@@ -126,6 +132,11 @@ The latest release includes the following major developments:
 - a custom branded loader animation is active
 - new enterprise workbook features now include **Workbook Index**, **Data Dictionary**, **Enterprise Console**, and **Audit Log Export**
 - documentation is standardized across README, DEPLOYMENT, and USER_GUIDE
+- a new searchable Feature Catalog is available in the app
+- a new keyboard-first Command Palette is available with Ctrl+/
+- a new Workbook Health sheet is available for workbook diagnostics
+- a new Data Profile sheet is available for active-sheet profiling
+- a new Deployment Playbook is available for clearer free hosting guidance
 
 ---
 ## 8. Feature Map
